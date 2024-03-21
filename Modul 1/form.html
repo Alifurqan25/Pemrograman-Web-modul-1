@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form dan Tabel</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      textarea {
+        resize: vertical;
+      }
+      button {
+        padding: 8px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #000;
+        background-color: gold;
+      }
+      th,
+      td {
+        border: 1px solid #000;
+        padding: 5px;
+        text-align: left;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="nama">Nama:</label><br />
+      <input type="text" id="nama" name="nama" /><br />
+      <label for="nim">NIM:</label><br />
+      <input type="number" id="nim" name="nim" /><br />
+      <label for="tanggal">Tanggal:</label><br />
+      <input type="date" id="tanggal" name="tanggal" /><br />
+      <label for="alamat">Alamat:</label><br />
+      <textarea id="alamat" name="alamat" cols="21" rows="5"></textarea><br />
+      <button type="button" onclick="simpanData()">Simpan</button>
+    </form>
+
+    <table id="myTable">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Alamat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data akan ditambahkan secara dinamis -->
+      </tbody>
+    </table>
+
+    <script>
+      function simpanData() {
+        var nama = document.getElementById("nama").value;
+        var nim = document.getElementById("nim").value;
+        var tanggal = document.getElementById("tanggal").value;
+        var alamat = document.getElementById("alamat").value;
+
+        var table = document
+          .getElementById("myTable")
+          .getElementsByTagName("tbody")[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+
+        cell1.innerHTML = table.rows.length;
+        cell2.innerHTML = nama;
+        cell3.innerHTML = nim;
+        cell4.innerHTML = alamat;
+
+        // Reset form
+        document.getElementById("myForm").reset();
+      }
+    </script>
+  </body>
+</html>
